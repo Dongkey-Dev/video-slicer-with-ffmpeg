@@ -8,6 +8,7 @@ Windows = "Windows"
 macOS = "macOS"
 MV_BACK = f"--Move Back Dir..--"
 
+
 def get_desktop_path():
     os_platform = platform.platform().split('-')[0]
     if os_platform == Windows:
@@ -16,17 +17,20 @@ def get_desktop_path():
         DESKTOP_PATH = f"/users/{os.getlogin()}/Desktop"
     return DESKTOP_PATH
 
+
 def is_vid(path):
     if ".mp4" in path:
         return True
     return False
-    
+
+
 def move_dir(cur, selected):
     if selected == MV_BACK:
         return Path(cur).parent
     else:
         return os.path.join(cur, selected)
-    
+
+
 def execute_edit(cur, selected):
     start = input(f"Enter video start time seocnd want to slice.\n")
     during = input(f"Enter the duration of the video second.\n")
@@ -34,8 +38,9 @@ def execute_edit(cur, selected):
     output += '.' + selected.split('.')[-1]
     output = os.path.join(cur, output)
     edit_vid_name = os.path.join(cur, selected)
-    os.system(f"ffmpeg -ss {start} -t {during} -i {edit_vid_name} {output}")
+    os.system(f"ffmpeg -ss {start} -t {during} -i '{edit_vid_name}' '{output}'")
     
+
 def main():
     cur = get_desktop_path()
     while True:
