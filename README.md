@@ -2,9 +2,10 @@
 
 # Install
 
-Go to Release and download `video_slicer`
+Go to Release and download `video_slicer` 
 
 and install FFMPEG with below link https://ffmpeg.org/download.html 
+
 ---
 
 # Usage
